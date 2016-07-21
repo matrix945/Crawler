@@ -2,12 +2,16 @@
 import	urllib2
 import	urllib
 
-html = urllib2.urlopen('https://www.yahoo.com/').read()
-#1)you have to put the http://
-#2) you have to use google's api or Xgoogle
-#3)https://ca.search.yahoo.com/sugg/gossip/gossip-ca-sayt?output=yjsonp&l=1&command=hello
 
+# gjc = urllib.quote("科技")
+# print gjc
+#swift utf-8 
 
+url = "https://ca.search.yahoo.com/sugg/gossip/gossip-ca-sayt?output=yjsonp&l=1&command="
+resultNum = "&nresults="
+
+html = urllib2.Request('https://ca.search.yahoo.com/sugg/gossip/gossip-ca-sayt?output=yjsonp&l=1&command=/').read()
+html.add_header('Referer' , '')
 
 print html
 

@@ -2,8 +2,12 @@
 import	urllib2
 import	urllib
 import re
+import time
+from random import choice
+iplist  = ['27.24.158.153:81','46.209.70.74:8080','60.29.255.88:8888']
 
-# gjc = urllib.quote("科技")
+ip= choice(iplist)
+# gjc = urllib.quote("XXX")
 # print gjc
 #swift utf-8 
 
@@ -20,7 +24,9 @@ headers = {
 		
 		   }
 
-
+proxy_support = urllib2.ProxyHandler({'http':'http://'+ip})
+opener = urllib2.build_opener(proxy_support)
+urllib2.install_opener( opener )
 
 req = urllib2.Request(url)
 for i in headers:
@@ -32,7 +38,6 @@ html = urllib2.urlopen(req).read()
 
 # print html
 # print html[69]
-
 # print html.find("\"r\":")
 
 ss = re.findall("\"(.*?)\"",html)
